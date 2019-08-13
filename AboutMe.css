@@ -10,11 +10,10 @@
 
 body {
   margin-top: 50px;
-  margin-bottom: 50px;
-  color: black;  
   text-align: center; 
   background-image: url("background.jpg");
   background-size: 87.5em;
+  transform: rotate(90deg);
 }
 
 p { 
