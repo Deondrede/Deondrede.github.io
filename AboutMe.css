@@ -1,0 +1,47 @@
+.boxed {
+  border-radius: 15px 50px 30px 0px;
+  background: rgb(235, 146, 94);
+  border: 5px solid black;
+  padding: 20px; 
+  width: 650px;
+  height: auto; 
+  display: inline-block;
+  }
+
+body {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  color: black;  
+  text-align: center; 
+  background-image: url("background.jpg");
+  background-size: 87.5em;
+}
+
+p { 
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif; 
+  font-size: 23px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+display: block;
+text-align: center;
+text-decoration: none;
+float: left;
+padding: 3px;
+}
+
+img {
+  width: 2.5rem;
+}
