@@ -1,0 +1,74 @@
+body {
+  background: linear-gradient(-225deg, #2CD8D5 0%, #6B8DD6 48%, #8E37D7 100%) no-repeat center center fixed;
+  background-size: cover;
+  font-size: 23px;
+  -webkit-font-smoothing: none;
+  font-family: 'pokemon-font', monospace;
+  color: white;
+  text-shadow: -1.4px 0 black, 0 1.4px black, 1.4px 0 black, 0 -1.4px black;
+}
+h1 {
+  font-size: 40px;
+  line-height: 0.3;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+#pokeSearch-page {
+  text-align: center;
+}
+
+#pokeDetails > img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media only screen and (min-width: 767px){
+  #pokeDetails > img {
+    width: 14%;
+    height: auto;
+  }
+}
+
+@media only screen and (min-width: 1025px){ 
+  .Stats {
+    position: absolute;
+    width: 27%;
+    left: 7%;
+    top: 17%;
+  }
+}
+
+progress {
+  width: 75%;
+  height: 10px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 25px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+progress::-webkit-progress-value {
+  background: rgb(40, 172, 102);
+  border-radius: 20px;
+}
+
+.Stats {
+  border-radius: 0px 30px 30px 0px;
+  background: transparent;
+  border: 5px solid black;
+  padding: 2px;
+  height: auto;
+}
+
+.Stats > p {
+  margin-top: 1px;
+  margin-bottom: -8.2px;
+  font-size: 15px;
+}
