@@ -17,11 +17,6 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  z-index: -10;
-  left: 0;
-  top: 0;
-  position: fixed;
-  display: block;
 }
 
 p { 
