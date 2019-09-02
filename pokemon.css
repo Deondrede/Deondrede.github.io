@@ -3,7 +3,7 @@ body {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-repeat: no-repeat;
+  background-size: 100%;
   font-size: 23px;
   -webkit-font-smoothing: none;
   font-family: 'pokemon-font', monospace;
