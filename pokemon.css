@@ -1,9 +1,12 @@
-body {
+html {
   background: linear-gradient(-225deg, #2CD8D5 0%, #6B8DD6 48%, #8E37D7 100%) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: 100%;
+  background-size: cover;
+}
+
+body {
   font-size: 23px;
   -webkit-font-smoothing: none;
   font-family: 'pokemon-font', monospace;

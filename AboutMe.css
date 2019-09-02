@@ -1,3 +1,11 @@
+html {
+  background: linear-gradient(-225deg, #2CD8D5 0%, #6B8DD6 48%, #8E37D7 100%) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 .boxed {
   border-radius: 15px 50px 30px 0px;
   background: rgb(235, 146, 94);
@@ -12,11 +20,6 @@ body {
   margin-top: 50px;
   margin-bottom: 50px;
   text-align: center; 
-  background: linear-gradient(-225deg, #2CD8D5 0%, #6B8DD6 48%, #8E37D7 100%) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: 100%;
 }
 
 p { 
