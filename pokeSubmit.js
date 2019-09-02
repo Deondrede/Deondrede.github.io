@@ -1,9 +1,9 @@
 function pokeSubmit(){  //v1 of the pokeApi is deprecated, use v2
     var param = document.getElementById("pokeInput").value;
-    var pokeURL = "http://pokeapi.co/api/v2/pokemon/" + param;
+    var pokeURL = "https://pokeapi.co/api/v2/pokemon/" + param;
 
     $.ajax({
-        url: "http://pokeapi.co/api/v2/pokemon/" + param,
+        url: "https://pokeapi.co/api/v2/pokemon/" + param,
         dataType: "json",
         error: function(){
             alert("ERROR: Not a valid Pokémon");
