@@ -106,7 +106,7 @@ function pokeSubmit(){  //v1 of the pokeApi is deprecated, use v2
             else {
                 html += '<p>Type: ' + pokeType1 + '</p>'; // only display Type 2 if it is not null
             }
-            html += '<div class="boxed-descrption" style="border-radius: 30px 30px 30px 30px;background: transparent;border: 5px solid black;padding: 5px;width: 60%;height: auto; display: inline-block;">'
+            html += '<div class="boxed-descrption" style="border-radius: 15px 50px 30px 0px;background: transparent;border: 5px solid black;padding: 5px;width: 60%;height: auto; display: inline-block;">'
             html += '<p>' + pokeDescription + '</p>';
             html += '</div>';
 
