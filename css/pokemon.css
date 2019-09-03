@@ -43,6 +43,7 @@ h1 {
     width: 27%;
     left: 7%;
     top: 17%;
+    margin-top: 0px !important;
   }
 }
 
@@ -67,11 +68,12 @@ progress::-webkit-progress-value {
 }
 
 .Stats {
-  border-radius: 0px 30px 30px 0px;
+  border-radius: 30px 30px 30px 30px;
   background: transparent;
   border: 5px solid black;
   padding: 2px;
   height: auto;
+  margin-top: 8px;
 }
 
 .Stats > p {
