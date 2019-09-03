@@ -1,7 +1,7 @@
 html {
   background: linear-gradient(-225deg, #2CD8D5 0%, #6B8DD6 48%, #8E37D7 100%) no-repeat center center fixed;
-  min-height: 100%;
-  width: 100%;
+  min-height: 1000px;
+  width: 1000px;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -21,9 +21,6 @@ html {
 
 body {
   margin-top: 50px;
-  margin-bottom: 50px;
-  min-height: 100%;
-  width: 100%;
 }
 
 p { 
