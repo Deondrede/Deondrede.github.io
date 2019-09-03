@@ -1,12 +1,10 @@
 html {
+  min-height: 100%;
   background: linear-gradient(-225deg, #2CD8D5 0%, #6B8DD6 48%, #8E37D7 100%) no-repeat center center fixed;
-  min-height: 1000px;
-  width: 1000px;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  overflow: hidden;
 }
 
 .boxed {
@@ -21,9 +19,13 @@ html {
 
 body {
   margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: center; 
+  min-height: 100%;
 }
 
 p { 
+  display: block;
   margin-block-start: 1em;
   margin-block-end: 1em;
   margin-inline-start: 0px;
