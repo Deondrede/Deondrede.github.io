@@ -1,4 +1,14 @@
-function pokeSubmit(){  //v1 of the pokeApi is deprecated, use v2
+//For enter key functionality
+$( document ).ready(function() {
+    $('#pokeSubmit').submit(function(e){
+        console.log('Start of override')
+        e.preventDefault()
+        pokeSubmit()
+    });
+});
+
+//v1 of the pokeApi is deprecated, use v2
+function pokeSubmit(){
     var param = document.getElementById("pokeInput").value;
     var pokeURL = "https://pokeapi.co/api/v2/pokemon/" + param;
 
