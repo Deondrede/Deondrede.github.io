@@ -1,9 +1,9 @@
 //For enter key functionality
 $( document ).ready(function() {
     $('#pokeSubmit').submit(function(e){
-        console.log('Start of override')
-        e.preventDefault()
-        pokeSubmit()
+        console.log('Override Default')
+        e.preventDefault();
+        pokeSubmit();
     });
 });
 
@@ -91,36 +91,44 @@ function pokeSubmit(){
                     pokeGenus = data2.genera[i].genus;
                 }
             }
-             // append data to HTML
+             //Append data to HTML
             var html = "";
-            html += '<div class="Stats" style="font-size: 15px;">';
+            html += '<div class="Stats">';
             html += '<p>HP</p>';
+            html += '<p style="position:relative; top: 12.9px; font-size: 13px; color: black; text-shadow: none;">' + statHP + '/255</p>'
             html += '<progress id="hp" max="255" value="' + statHP + '"></progress>';
             html += '<p>Attack</p>';
+            html += '<p style="position:relative; top: 12.9px; font-size: 13px; color: black; text-shadow: none;">' + statAttack + '/180</p>'
             html += '<progress id="attack" max="180" value="' + statAttack + '"+></progress>';
             html += '<p>Sp.Attack</p>';
+            html += '<p style="position:relative; top: 12.9px; font-size: 13px; color: black; text-shadow: none;">' + statSpAttack + '/180</p>'
             html += '<progress id="sp.attack" max="180" value="' + statSpAttack + '"></progress>';
             html += '<p>Defense</p>';
+            html += '<p style="position:relative; top: 12.9px; font-size: 13px; color: black; text-shadow: none;">' + statDefense + '/230</p>'
             html += '<progress id="defense" max="230" value="' + statDefense + '"></progress>';
             html += '<p>Sp.Defense</p>';
+            html += '<p style="position:relative; top: 12.9px; font-size: 13px; color: black; text-shadow: none;">' + statSpDefense + '/230</p>'
             html += '<progress id="sp.defense" max="230" value="' + statSpDefense + '"></progress>';
             html += '<p>Speed</p>';
+            html += '<p style="position:relative; top: 12.9px; font-size: 13px; color: black; text-shadow: none;">' + statSpeed + '/180</p>'
             html += '<progress id="speed" max="180" value="' + statSpeed + '"></progress>';
             html += '</div>';
             html += '<img src="' + imageURI + '">';
             html += '<h1>#' + pokeID + ' ' + pokeName + '</h1>';
             html += '<h3>' + pokeGenus + '</h3>';
+            
             if (pokeType2 != null){
                 html += '<p>Type: ' + pokeType1 + ', ' + pokeType2 + '</p>';
             }
             else {
                 html += '<p>Type: ' + pokeType1 + '</p>'; // only display Type 2 if it is not null
             }
-            html += '<div class="boxed-descrption" style="border-radius: 30px 30px 30px 30px;background: transparent;border: 5px solid black;padding: 5px;width: 60%;height: auto; display: inline-block;">'
+
+            html += '<div id="boxed-description">'
             html += '<p>' + pokeDescription + '</p>';
             html += '</div>';
 
-            // empty the and append new html to the listview
+            //Empty the and append new html to the listview
             $("#pokeDetails").empty();
             $("#pokeDetails").append(html);
         });
