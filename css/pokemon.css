@@ -75,6 +75,16 @@ progress::-webkit-progress-value {
 
 .Stats > p {
   margin-top: 1px;
-  margin-bottom: -8.2px;
+  margin-bottom: -15.2px;
   font-size: 15px;
+}
+
+#boxed-description {
+  border-radius: 30px 30px 30px 30px;
+  background: transparent;
+  border: 5px solid black;
+  padding: 5px;
+  width: 60%;
+  height: auto; 
+  display: inline-block;
 }
