@@ -1,7 +1,6 @@
 //For enter key functionality
 $( document ).ready(function() {
     $('#pokeSubmit').submit(function(e){
-        console.log('Override Default')
         e.preventDefault();
         pokeSubmit();
     });
@@ -10,6 +9,7 @@ $( document ).ready(function() {
 //v1 of the pokeApi is deprecated, use v2
 function pokeSubmit(){
     var param = document.getElementById("pokeInput").value;
+    param = param.toLowerCase();
     var pokeURL = "https://pokeapi.co/api/v2/pokemon/" + param;
 
     $.ajax({
@@ -39,6 +39,32 @@ function pokeSubmit(){
         }
         else {
             var pokeType2 = null;
+        }
+
+        //Abilities
+        var pokeability1 = data.abilities[0].ability.name;
+        pokeability1 = pokeability1.charAt(0).toUpperCase() + pokeability1.slice(1);
+        if (pokeability1.includes('-')){
+            var position1 = pokeability1.indexOf('-')
+            var firstHalf1 = pokeability1.slice(0, position1)
+            var secondHalf1 = pokeability1.slice(position1+1, pokeability1.length)
+            secondHalf1 = secondHalf1.charAt(0).toUpperCase() + secondHalf1.slice(1);
+            pokeability1 = firstHalf1 + " " + secondHalf1;
+        }
+
+        if (data.abilities.length == 2){
+            var pokeability2 = data.abilities[1].ability.name;
+            pokeability2 = pokeability2.charAt().toUpperCase() + pokeability2.slice(1);
+            if (pokeability2.includes('-')){
+                var position2 = pokeability2.indexOf('-')
+                var firstHalf2 = pokeability2.slice(0, position2);
+                var secondHalf2 = pokeability2.slice(position2+1, pokeability2.length)
+                secondHalf2 = secondHalf2.charAt(0).toUpperCase() + secondHalf2.slice(1);
+                pokeability2 = firstHalf2 + " " + secondHalf2;
+            }
+        }
+        else {
+            var pokeability2 = null;
         }
 
         //Stats
@@ -91,26 +117,27 @@ function pokeSubmit(){
                     pokeGenus = data2.genera[i].genus;
                 }
             }
-             //Append data to HTML
+            //Append data to HTML
             var html = "";
             html += '<div class="Stats">';
+            html += '<h3 id="base-stats" style="margin: 0; text-decoration: underline">Base Stats</h3>';
             html += '<p>HP</p>';
-            html += '<p style="position:relative; top: 12.9px; font-size: 13px; color: black; text-shadow: none;">' + statHP + '/255</p>'
+            html += '<p style="position:relative; top: 12.7px; font-size: 13px; color: black; text-shadow: none;">' + statHP + '/255</p>'
             html += '<progress id="hp" max="255" value="' + statHP + '"></progress>';
             html += '<p>Attack</p>';
-            html += '<p style="position:relative; top: 12.9px; font-size: 13px; color: black; text-shadow: none;">' + statAttack + '/180</p>'
+            html += '<p style="position:relative; top: 12.7px; font-size: 13px; color: black; text-shadow: none;">' + statAttack + '/180</p>'
             html += '<progress id="attack" max="180" value="' + statAttack + '"+></progress>';
             html += '<p>Sp.Attack</p>';
-            html += '<p style="position:relative; top: 12.9px; font-size: 13px; color: black; text-shadow: none;">' + statSpAttack + '/180</p>'
+            html += '<p style="position:relative; top: 12.7px; font-size: 13px; color: black; text-shadow: none;">' + statSpAttack + '/180</p>'
             html += '<progress id="sp.attack" max="180" value="' + statSpAttack + '"></progress>';
             html += '<p>Defense</p>';
-            html += '<p style="position:relative; top: 12.9px; font-size: 13px; color: black; text-shadow: none;">' + statDefense + '/230</p>'
+            html += '<p style="position:relative; top: 12.7px; font-size: 13px; color: black; text-shadow: none;">' + statDefense + '/230</p>'
             html += '<progress id="defense" max="230" value="' + statDefense + '"></progress>';
             html += '<p>Sp.Defense</p>';
-            html += '<p style="position:relative; top: 12.9px; font-size: 13px; color: black; text-shadow: none;">' + statSpDefense + '/230</p>'
+            html += '<p style="position:relative; top: 12.7px; font-size: 13px; color: black; text-shadow: none;">' + statSpDefense + '/230</p>'
             html += '<progress id="sp.defense" max="230" value="' + statSpDefense + '"></progress>';
             html += '<p>Speed</p>';
-            html += '<p style="position:relative; top: 12.9px; font-size: 13px; color: black; text-shadow: none;">' + statSpeed + '/180</p>'
+            html += '<p style="position:relative; top: 12.7px; font-size: 13px; color: black; text-shadow: none;">' + statSpeed + '/180</p>'
             html += '<progress id="speed" max="180" value="' + statSpeed + '"></progress>';
             html += '</div>';
             html += '<img src="' + imageURI + '">';
@@ -122,6 +149,20 @@ function pokeSubmit(){
             }
             else {
                 html += '<p>Type: ' + pokeType1 + '</p>'; // only display Type 2 if it is not null
+            }
+
+            if (pokeability2 != null){
+                html += '<div class="Abilities">';
+                html += '<h3>Abilities</h3>';
+                html += '<p>' + pokeability1 + '</p>';
+                html += '<p>' + pokeability2 + '</p>';
+                html += '</div>'
+            }
+            else {
+                html += '<div class="Abilities">';
+                html += '<h3>Abilities</h3>';
+                html += '<p>' + pokeability1 + '</p>';
+                html += '</div>'
             }
 
             html += '<div id="boxed-description">'
