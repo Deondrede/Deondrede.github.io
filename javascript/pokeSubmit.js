@@ -6,6 +6,35 @@ $( document ).ready(function() {
     });
 });
 
+//Function for shiny toggle
+function GETShiny(){
+    var param = document.getElementById("pokeInput").value;
+    param = param.toLowerCase();
+    var pokeURL = "https://pokeapi.co/api/v2/pokemon/" + param;
+
+    $.ajax({
+        url: "https://pokeapi.co/api/v2/pokemon/" + param,
+        dataType: "json",
+    }) .done(function(){
+        console.log("Image GET Successful")
+    });
+
+    $.getJSON(pokeURL, function(image){
+        var imageURI = image.sprites.front_default;
+        if (image.sprites.front_shiny != null){
+            var shinyImage = image.sprites.front_shiny;
+            console.log("Shiny found");
+        }
+
+        if (document.getElementById("pokeImage").src != shinyImage){
+            document.getElementById("pokeImage").src = shinyImage;
+        }
+        else {
+            document.getElementById("pokeImage").src = imageURI;
+        }
+    })
+}
+
 //v1 of the pokeApi is deprecated, use v2
 function pokeSubmit(){
     var param = document.getElementById("pokeInput").value;
@@ -140,7 +169,7 @@ function pokeSubmit(){
             html += '<p style="position:relative; top: 12.7px; font-size: 13px; color: black; text-shadow: none;">' + statSpeed + '/180</p>'
             html += '<progress id="speed" max="180" value="' + statSpeed + '"></progress>';
             html += '</div>';
-            html += '<img src="' + imageURI + '">';
+            html += '<img id="pokeImage" src="' + imageURI + '" onclick="GETShiny()" style="cursor:pointer;"/>';
             html += '<h1>#' + pokeID + ' ' + pokeName + '</h1>';
             html += '<h3>' + pokeGenus + '</h3>';
             
