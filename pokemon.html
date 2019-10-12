@@ -13,16 +13,15 @@
     <div data-role="page" id="pokeSearch-page">
         <h1>Pokémon App</h1>
         <div data-role="main" class="ui-content">
-            <div>
-                <form id = "pokeSubmit">
-                    <label for="pokeInput">Enter a Pokémon name or number:</label>
-                    <br>
-                    <input type="text" name="pokeInput" id="pokeInput" placeholder="Enter a Pokémon..." value="">
-                    <input type="submit" id="btn" text="Submit">
-                </form>
-            </div>
+            <form id = "pokeSubmit">
+                <label for="pokeInput">Enter a Pokémon name or number:</label>
+                <br>
+                <input type="text" name="pokeInput" id="pokeInput" placeholder="Enter a Pokémon..." value="">
+                <input type="submit" id="btn" text="Submit">
+            </form>
+            <div class="loader">Loading...</div>
             <div data-role="listview" data-inset="true" id="pokeDetails">
-                <!--There's a secret if you click the image-->
+                <!--There's a neat suprise if you click the image-->
             </div>
         </div>
     </div>
