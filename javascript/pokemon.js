@@ -2,9 +2,15 @@
 $( document ).ready(function() {
     $('#pokeSubmit').submit(function(e){
         e.preventDefault();
-        $("#pokeDetails").toggle();
-        $('.loader').toggle();
-        pokeSubmit();
+        if (document.getElementById("pokeInput").value.length == 0){
+            alert("Please enter a Pokemon name");
+        }
+        else {
+            $("#pokeDetails").toggle();
+            $('.loader').toggle();
+            pokeSubmit();
+        }
+        
     });
 });
 
