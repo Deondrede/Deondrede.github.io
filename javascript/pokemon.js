@@ -171,7 +171,6 @@ function getJSON(pokeURL, param) {
             $("#pokeDetails").append(html);
             
         }) .done(function(){
-            console.log("wtf");
             $('.loader').toggle();
             $("#pokeDetails").toggle();
         });
