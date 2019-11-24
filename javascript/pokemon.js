@@ -19,8 +19,25 @@ function getJSON(pokeURL, param) {
         //Basic info
         var imageURI = data.sprites.front_default;
         var pokeID = data.id;
+
+        //Get rid of unnecessary text in pokemon names
         var pokeName = data.name;
         pokeName = pokeName.charAt(0).toUpperCase() + pokeName.slice(1);
+        if (pokeName.includes('-') && data.id != 772) {
+            var position = pokeName.indexOf('-');
+            var amendedName = pokeName.slice(0, position);
+            pokeName = amendedName;
+        }
+        if (data.id == 32) {
+            var pokeName = "Nidoran♂";
+        }
+        else if (data.id == 29){
+            var pokeName = "Nidoran♀";
+        }
+        else if (data.id == 772) {
+            pokeName = "Type: Null"
+        }
+
         var pokeType1 = data.types[0].type.name;
         pokeType1 = pokeType1.charAt(0).toUpperCase() + pokeType1.slice(1);
         if (data.types.length == 2) { //check if the pokemon is considered more than one type
@@ -155,7 +172,7 @@ function getJSON(pokeURL, param) {
             $("#pokeDetails").append(html);
             
         }) .done(function(){
-            console.log("done");
+            console.log("wtf");
             $('.loader').toggle();
             $("#pokeDetails").toggle();
         });
