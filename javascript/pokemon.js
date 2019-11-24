@@ -10,7 +10,6 @@ $( document ).ready(function() {
             $('.loader').toggle();
             pokeSubmit();
         }
-        
     });
 });
 
