@@ -1,0 +1,138 @@
+/* Custom styles for modern, sleek look */
+:root {
+  --accent: #20c997; /* teal accent */
+  --accent-dark: #189f84;
+  --heading-font: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --body-font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Typography */
+body { font-family: var(--body-font); color: #e6eef8; }
+h1, h2, h3, h4, h5, h6, .masthead-heading { font-family: var(--heading-font); color: #fff; }
+
+.masthead {
+  padding: 6rem 0;
+  background: linear-gradient(90deg,#0f172a 0%, #0b1220 100%);
+  color: #fff;
+  text-align: center;
+}
+.masthead-heading { font-size: 2.5rem; letter-spacing: .02em; font-weight:700; }
+.masthead .lead { color: rgba(255,255,255,.85); }
+.navbar-shrink { background-color: rgba(0,0,0,.85) !important; transition: background-color .3s ease; }
+
+/* Navbar link color consistency */
+.navbar .navbar-brand { color: #fff !important; font-weight:700; }
+.navbar .nav-link { color: rgba(255,255,255,.85) !important; }
+.navbar .nav-link:hover, .navbar .nav-link:focus { color: #fff !important; }
+.navbar .nav-link.active { color: var(--accent) !important; font-weight:600; }
+
+/* Make brand typography and casing consistent across pages */
+.navbar .navbar-brand {
+  font-family: var(--heading-font) !important;
+  letter-spacing: 0.0625em;
+  text-transform: uppercase;
+}
+
+/* Remove the yellow background from the main site toggler */
+#mainNav .navbar-toggler {
+  background-color: transparent !important;
+  color: #fff !important;
+  border: 0 !important;
+}
+
+/* Ensure toggler icon lines are white for dark navbars */
+.navbar-dark .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255,255,255,0.85)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+.section-heading { font-weight:700; margin-bottom: .5rem; }
+.card { border: none; border-radius: .75rem; box-shadow: 0 6px 18px rgba(3,11,39,.08); background-color: #071026; color: #e6eef8; }
+.card .fa-2x { color: var(--accent); }
+.section-subheading.text-muted { color: #6c757d !important; }
+footer.site-footer { padding: 3rem 0; background: #0b1220; color: rgba(255,255,255,.6); text-align:center; }
+.fa-circle-user { color: #6c757d; }
+@media (min-width: 992px) {
+  .masthead-heading { font-size: 3rem; }
+}
+
+/* Buttons use the accent color */
+.btn-primary { background-color: var(--accent) !important; border-color: var(--accent) !important; }
+.btn-primary:hover { background-color: var(--accent-dark) !important; border-color: var(--accent-dark) !important; }
+
+/* Dark mode base */
+body.bg-dark { background: linear-gradient(90deg,#030417 0%, #071026 100%); color: #e6eef8; min-height: 100vh; }
+
+/* Form controls in dark mode */
+body.bg-dark .form-control { background-color: #0b1220; border: 1px solid #1e2a3a; color: #fff; }
+body.bg-dark .form-control::placeholder { color: rgba(255,255,255,.5); }
+body.bg-dark .form-control:focus { border-color: var(--accent); box-shadow: 0 0 0 .2rem rgba(32,201,151,.12); }
+
+/* Loader color tweak */
+.loader, .loader:before, .loader:after { background: #fff; }
+
+/* Accent badge for site */
+.badge-accent { background: var(--accent); color: #fff; font-weight:600; padding: .35rem .55rem; border-radius: .45rem; }
+
+/* Ensure section headings contrast */
+.section-heading { color: #fff; }
+
+/* Result animation */
+.result-enter { animation: fadeInUp .45s ease both; }
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Dark mode base */
+body.bg-dark {
+  background: linear-gradient(90deg,#030417 0%, #071026 100%);
+  color: #e6eef8;
+  min-height: 100vh;
+}
+
+/* Make cards dark */
+.card {
+  background-color: #071026;
+  color: #e6eef8;
+}
+.card .card-text { color: rgba(255,255,255,.92); font-size: 1.03rem; line-height: 1.5; }
+
+/* Improve contrast for muted and lead text in dark mode */
+body.bg-dark .text-muted { color: rgba(255,255,255,0.80) !important; }
+body.bg-dark p.lead, body.bg-dark .lead { color: rgba(255,255,255,0.94) !important; }
+/* Form controls in dark mode */
+body.bg-dark .form-control {
+  background-color: #0b1220;
+  border: 1px solid #1e2a3a;
+  color: #fff;
+}
+body.bg-dark .form-control::placeholder { color: rgba(255,255,255,.5); }
+body.bg-dark .form-control:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 .2rem rgba(32,201,151,.12);
+}
+
+/* Buttons adjust */
+.btn-outline-light {
+  border-color: rgba(255,255,255,.2);
+  color: #fff;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+/* Make outline-light CTA fully readable on hover/focus */
+.btn-outline-light:hover, .btn-outline-light:focus {
+  background-color: #fff !important;
+  color: #000 !important;
+  border-color: #fff !important;
+  box-shadow: 0 .25rem .5rem rgba(2,6,23,.16);
+  text-decoration: none !important;
+}
+
+/* Loader color tweak */
+.loader,
+.loader:before,
+.loader:after {
+  background: #fff;
+}
+
+/* Ensure section headings contrast */
+.section-heading { color: #fff; }

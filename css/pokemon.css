@@ -59,23 +59,22 @@
   }
 }
 
+/* Page-level base: visual theme handled by site styles (custom.css) */
 body {
-  background: linear-gradient(-225deg, #2CD8D5 0%, #6B8DD6 48%, #8E37D7 100%) no-repeat center center fixed;-webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  height: 100%;
-  font-size: 23px;
-  -webkit-font-smoothing: none;
-  font-family: 'pokemon-font', monospace;
-  color: white;
-  text-shadow: -1.4px 0 black, 0 1.4px black, 1.4px 0 black, 0 -1.4px black;
+  background: none;
+  color: inherit;
+  font-size: 1rem;
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--body-font);
 }
-h1 {
-  font-size: 40px;
-  line-height: 0.3;
-  margin-top: 15px;
-  margin-bottom: 20px;
+
+/* Scoped page header to match site masthead */
+#pokeSearch-page h1, #pokeSearch-page .masthead-heading {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 #pokeSearch-page {
