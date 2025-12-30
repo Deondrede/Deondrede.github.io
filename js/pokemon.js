@@ -117,58 +117,93 @@ function getJSON(pokeURL, param) {
                     pokeGenus = data2.genera[i].genus;
                 }
             }
-            //Append data to HTML
-            var html = "";
-            html += '<div class="Stats">';
-            html += '<h3 id="base-stats" style="margin: 0; text-decoration: underline">Base Stats</h3>';
-            html += '<p>HP</p>';
-            html += '<p style="position:relative; top: 12.7px; font-size: 13px; color: black; text-shadow: none;">' + statHP + '/255</p>';
-            html += '<progress id="hp" max="255" value="' + statHP + '"></progress>';
-            html += '<p>Attack</p>';
-            html += '<p style="position:relative; top: 12.7px; font-size: 13px; color: black; text-shadow: none;">' + statAttack + '/180</p>';
-            html += '<progress id="attack" max="180" value="' + statAttack + '"+></progress>';
-            html += '<p>Sp.Attack</p>';
-            html += '<p style="position:relative; top: 12.7px; font-size: 13px; color: black; text-shadow: none;">' + statSpAttack + '/180</p>';
-            html += '<progress id="sp.attack" max="180" value="' + statSpAttack + '"></progress>';
-            html += '<p>Defense</p>';
-            html += '<p style="position:relative; top: 12.7px; font-size: 13px; color: black; text-shadow: none;">' + statDefense + '/230</p>';
-            html += '<progress id="defense" max="230" value="' + statDefense + '"></progress>';
-            html += '<p>Sp.Defense</p>';
-            html += '<p style="position:relative; top: 12.7px; font-size: 13px; color: black; text-shadow: none;">' + statSpDefense + '/230</p>';
-            html += '<progress id="sp.defense" max="230" value="' + statSpDefense + '"></progress>';
-            html += '<p>Speed</p>';
-            html += '<p style="position:relative; top: 12.7px; font-size: 13px; color: black; text-shadow: none;">' + statSpeed + '/180</p>';
-            html += '<progress id="speed" max="180" value="' + statSpeed + '"></progress>';
-            html += '</div>';
-            html += '<img id="pokeImage" src="' + imageURI + '" onclick="getShiny()" style="cursor:pointer;"/>';
-            html += '<h1>#' + pokeID + ' ' + pokeName + '</h1>';
-            html += '<h3>' + pokeGenus + '</h3>';
-            if (pokeType2 != null) {
-                html += '<p>Type: ' + pokeType1 + ', ' + pokeType2 + '</p>';
+            //Compute stat percentages for progress bars
+            var hpPct = Math.round((statHP / 255) * 100);
+            var atkPct = Math.round((statAttack / 180) * 100);
+            var spAtkPct = Math.round((statSpAttack / 180) * 100);
+            var defPct = Math.round((statDefense / 230) * 100);
+            var spDefPct = Math.round((statSpDefense / 230) * 100);
+            var spdPct = Math.round((statSpeed / 180) * 100);
+
+            // Helper to escape text for HTML
+            function esc(text) {
+                var d = document.createElement('div');
+                d.textContent = text === undefined || text === null ? '' : text;
+                return d.innerHTML;
             }
-            else {
-                html += '<p>Type: ' + pokeType1 + '</p>'; // only display Type 2 if it is not null
+
+            function statBarHTML(label, value, max, pct) {
+                return `
+                <div class="mb-2">
+                  <div class="d-flex justify-content-between"><small>${esc(label)}</small><small>${esc(value)} / ${esc(max)}</small></div>
+                  <div class="progress" style="height:12px;">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="${esc(pct)}" aria-valuemin="0" aria-valuemax="100" style="width:${esc(pct)}%; background:var(--accent);"></div>
+                  </div>
+                </div>`;
             }
-            if (pokeability2 != null) {
-                html += '<div class="Abilities">';
-                html += '<h3>Abilities</h3>';
-                html += '<p>' + pokeability1 + '</p>';
-                html += '<p>' + pokeability2 + '</p>';
-                html += '</div>';
+
+            function typesHTML(t1, t2) {
+                if (t2) {
+                    return `<p class="mb-2">Type: <span class="badge badge-accent me-1">${esc(t1)}</span><span class="badge badge-accent">${esc(t2)}</span></p>`;
+                }
+                return `<p class="mb-2">Type: <span class="badge badge-accent">${esc(t1)}</span></p>`;
             }
-            else {
-                html += '<div class="Abilities">';
-                html += '<h3>Abilities</h3>';
-                html += '<p>' + pokeability1 + '</p>';
-                html += '</div>';
+
+            function abilitiesHTML(a1, a2) {
+                var s = '<div><span class="badge badge-accent me-2">' + esc(a1) + '</span>';
+                if (a2) s += '<span class="badge badge-accent">' + esc(a2) + '</span>';
+                s += '</div>';
+                return s;
             }
-            html += '<div id="boxed-description">';
-            html += '<p>' + pokeDescription + '</p>';
-            html += '</div>';
-            
-            //Empty the and append new html to the listview
-            $("#pokeDetails").empty();
-            $("#pokeDetails").append(html);
+
+            // Build a modern card using template literals and safe escaping
+            var html = `
+            <div class="card mb-4 shadow">
+              <div class="card-body">
+                <div class="row g-3 align-items-center">
+                  <div class="col-md-4 text-center">
+                    <img id="pokeImage" src="${esc(imageURI)}" onclick="getShiny()" alt="${esc(pokeName)}" class="img-fluid rounded mb-2" style="max-width:180px; cursor:pointer;"/>
+                  </div>
+                  <div class="col-md-8">
+                    <h2 class="h1 mb-1">#${esc(pokeID)} ${esc(pokeName)}</h2>
+                    <p class="text-muted lead mb-2">${esc(pokeGenus)}</p>
+                    ${typesHTML(pokeType1, pokeType2)}
+                    <div class="row">
+                      <div class="col-12 col-lg-6">
+                        <h5 class="mb-2">Base Stats</h5>
+                        ${statBarHTML('HP', statHP, 255, hpPct)}
+                        ${statBarHTML('Attack', statAttack, 180, atkPct)}
+                        ${statBarHTML('Sp. Attack', statSpAttack, 180, spAtkPct)}
+                      </div>
+                      <div class="col-12 col-lg-6">
+                        ${statBarHTML('Defense', statDefense, 230, defPct)}
+                        ${statBarHTML('Sp. Defense', statSpDefense, 230, spDefPct)}
+                        ${statBarHTML('Speed', statSpeed, 180, spdPct)}
+                      </div>
+                    </div>
+                    <div class="mt-3">
+                      <h5 class="mb-2">Abilities</h5>
+                      ${abilitiesHTML(pokeability1, pokeability2)}
+                    </div>
+                    <div class="mt-3">
+                      <p class="card-text">${esc(pokeDescription)}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>`;
+
+            // Convert to DOM fragment and append (safer than raw innerHTML)
+            var frag = document.createRange().createContextualFragment(html);
+            var cardNode = frag.firstElementChild;
+
+            $("#pokeDetails").empty().append(cardNode);
+            var $card = $("#pokeDetails").find('.card').first();
+            // trigger CSS animation and remove the helper class after animation completes
+            $card.addClass('result-enter');
+            $card.on('animationend webkitAnimationEnd', function(){
+                $card.removeClass('result-enter');
+            });
             
         }) .done(function(){
             $('.loader').toggle();
